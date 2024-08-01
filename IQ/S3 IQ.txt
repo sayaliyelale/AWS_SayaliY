@@ -1,6 +1,6 @@
 https://mindmajix.com/aws-s3-interview-questions
 
-
+=====================================================================================================
 
 Explain the S3 bucket
 Define all types of Storage Classes in AWS S3?
@@ -13,26 +13,7 @@ What do you already know approximately AWS Lambda?
 Why do we need to use a Web Application Firewall?
 Can you ping the router or default gateway that connects your subnets?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+====================================================================================================
 
 
 1. What do you know about AWS S3?
@@ -45,7 +26,6 @@ You can hold records as gadgets in S3 buckets. There can be more than one bucket
 
 S3 Bucket
 
-Do you want to enhance your skills and build your career in this Cloud Computing domain? Then enroll for " AWS Training " this course will help you to achieve excellence in this domain.
 3. How do I control the right of entry to an S3 bucket?
 Following are some of the now not unusual place location strategies for coping with getting proper access to an S3 bucket:
 
@@ -53,6 +33,7 @@ S3 Access Points: S3 provides predefined buckets to a particular application. Yo
 S3 Bucket Policies: To get proper access to S3 you can config the S3 bucket. We can also configure permissions at the bucket diploma which are the most effective exercise for gadgets inner a bucket.
 ACL: You may utilize Access Control List (ACL) to control get proper access to S3 assets and gadgets inside a bucket.
 IAM: We can use AWS Identity and Access Management (IAM) Groups, Roles, and Users to control get proper access to S3 assets.
+
 4. Define all types of Storage Classes in AWS S3?
 Given below the list of storage instructions are available for S3:
 
@@ -60,6 +41,7 @@ Standard S3 archiving class: Without targeted archiving instructions inside for 
 S3 Standard Storage Class for Infrequent Access: When we need to get proper access to three records, a wonderful deal masses lots much less often but swiftly and now not the usage of a delay, we are able to use the identical antique storage beauty for infrequent get proper of access to.
 S3 Reduced Redundancy Storage Class: Redundancy helios for duplicating records if reduced ranges of redundancy. This is a great exchange for state-of-the-art S3 daily storage due to a particular reason.
 S3 Glacier Storage Class: The S3 glacier storage works right for low-charge data records. As per present business demand, S3 is coming up with data sovereignty.
+
 5. What Is AWS S3 Replication?
 When we need to replicate gadgets asynchronously, we use S3 replication at a few degrees within-side the AWS S3 buckets. This can be auto stretch, actually in minimum budget.
 
@@ -77,10 +59,11 @@ Elastic Block Store
 7. Write down the Differences Between S3 And EBS?
 The differences between Amazon S3 and EBS are given below:
 
-S3	EBS
-Entity can be stored.	EC2 Instances file management tool.
-Data security is high.	Data security is fewer.
-Data centres using Redundancy.	Redundancy can be used by only one data centre.
+S3	                                        EBS
+Entity can be stored.	           EC2 Instances file management tool.
+Data security is high.	           Data security is fewer.
+Data centres using Redundancy.	   Redundancy can be used by only one data centre.
+
 8. What do you know about S3 Intelligent Tier?
 
 One of the S3 storage facilities that let customers hold costs via manner of the technique of transferring gadgets as consistent with the get proper of access to the volume amongst S3 now not unusual place to get proper of access to and IA.
@@ -90,7 +73,6 @@ S3 Intelligent Tier
 9. What is EC2?
 EC2 is a digital cloud tool controlled via the OS diploma. You can run this cloud server on every occasion you want and likely use it at the identical time as you need to put in your servers within-side the cloud, similar to your network servers, and at the identical time as you want to have complete control over the choice of hardware and the updates on the tool.
 
- MindMajix YouTube Channel
 
 10. What is Snow Ball?
 Snow Ball is a small software program application software that lets you replace terabytes of records inside and outside of the AWS environment.
@@ -116,7 +98,7 @@ Amazon S3 Standard
 Amazon S3 Standard-Infrequent Access
 Amazon S3 Reduced Redundancy Storage
 Amazon Glacier
-Become a master of AWS by going through this online AWS Training in Hyderabad!
+
 
 16. Explain T2 instances.
 T2 Instances are designed to provide moderate baseline trendy regular favoured simple typical overall performance and the capability to burst to higher trendy regular favoured simple typical overall performance as required via manner of the technique of the workload.
@@ -138,6 +120,7 @@ SaaS (Software as a Service)
 DaaS (Data as a Service)
 PaaS (Platform as a Service)
 IaaS (Infrastructure as a Service)
+
 20. How can you lock the Object in AWS S3?
 This option in AWS S3 lets someone hold their records in a write-once-read-many (WORM) format. In this manner, the individual can hold the records and protect them from loss or manipulation in future. You can activate it via the manner of the technique of companies to satisfy the data saving demands from business clients.
 
