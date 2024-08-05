@@ -1,0 +1,14 @@
+
+
+1.create one file with data
+
+2.write a script
+
+01,vinayak,latur
+02,sayali,renapur
+03,rutu,kolhapur
+04,Datta,Bodka
+05,Shubham,Pune
+
+
+

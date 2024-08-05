@@ -1,0 +1,29 @@
+#Creating user Variable for all the users 
+users="Vinayak_aws Kawaljeet_azure Ethans_devops Masteruser"
+
+
+#Using do loop creating all user and creating there access-keys
+for user in ${users}
+do
+        aws iam create-user --user-name "${user}"
+		aws iam create-access-key --user-name "${user}"        
+		
+done
+
+#attaching policy to each user 
+  
+       aws iam attach-user-policy \
+       --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
+       --user-name Vinayak_aws
+	
+	   aws iam attach-user-policy \
+      --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess \
+      --user-name Kawaljeet_azure
+	   
+	   aws iam attach-user-policy \
+      --policy-arn arn:aws:iam::aws:policy/AmazonRDSFullAccess \
+      --user-name Ethans_devops
+	
+      aws iam attach-user-policy \
+     --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess \
+     --user-name Masteruser

@@ -1,0 +1,32 @@
+id=`head -1 mydata.txt| cut -d',' -f1`
+name=`head -1 mydata.txt| cut -d',' -f2`
+loc=`head -1 mydata.txt| cut -d',' -f3`
+
+echo "Serial number ${id}. my name is ${name} , my hometown is ${loc}."
+
+
+
+id1=`head -2 mydata.txt|tail -1 | cut -d',' -f1`
+name1=`head -2 mydata.txt|tail -1 | cut -d',' -f2`
+loc1=`head -2 mydata.txt|tail -1 | cut -d',' -f3`
+
+echo "Serial number ${id1}. my name is ${name1} , my hometown is ${loc1}."
+
+id2=`head -3 mydata.txt|tail -2 | cut -d',' -f1`
+name2=`head -3 mydata.txt|tail -2 | cut -d',' -f2`
+loc2=`head -3 mydata.txt|tail -2 | cut -d',' -f3`
+
+echo "Serial number ${id2}. my name is ${name2} , my hometown is ${loc2}."
+
+id3=`head -4 mydata.txt|tail -3 | cut -d',' -f1`
+name3=`head -4 mydata.txt|tail -3 | cut -d',' -f2`
+loc3=`head -4 mydata.txt|tail -3 | cut -d',' -f3`
+
+echo "Serial number ${id3}. my name is ${name3} , my hometown is ${loc3}."
+
+id4=`tail -1 mydata.txt | cut -d',' -f1`
+name4=`tail -1 mydata.txt | cut -d',' -f2`
+loc4=`tail -1 mydata.txt | cut -d',' -f3`
+
+echo "Serial number ${id4}. my name is ${name4} , my hometown is ${loc4}."
+

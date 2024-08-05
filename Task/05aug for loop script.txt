@@ -1,0 +1,10 @@
+for var in `cat data.txt`
+do
+
+id=`echo ${var} | cut -d',' -f1`
+name=`echo ${var} | cut -d',' -f2`
+loc=`echo ${var} | cut -d',' -f3`
+
+echo "Serial Number ${id}.My name is ${name}. My hometown is ${loc}
+
+done

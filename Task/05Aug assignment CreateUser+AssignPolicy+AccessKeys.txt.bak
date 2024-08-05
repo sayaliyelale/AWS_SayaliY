@@ -1,0 +1,33 @@
+users="Vinayak_aws Kawaljeet_azure Ethans_devops Masteruser"
+
+for user in ${users}
+do
+        aws iam create-user --user-name "${user}"
+		aws iam create-access-key --user-name "${user}"
+		
+        echo " Users created succesfully"
+        
+		
+done
+
+	aws iam attach-user-policy \
+    --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
+    --user-name Vinayak_aws
+	
+	
+	
+	aws iam attach-user-policy \
+    --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess \
+    --user-name Kawaljeet_azure
+	
+	
+	
+	aws iam attach-user-policy \
+    --policy-arn arn:aws:iam::aws:policy/AmazonRDSFullAccess \
+    --user-name Ethans_devops
+	
+	
+	
+	aws iam attach-user-policy \
+    --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess \
+    --user-name Masteruser
