@@ -1,0 +1,16 @@
+for user in `cat data.txt`
+do
+      new_user=`echo ${user} | cut -d',' -f1`
+	  policy_arn=`echo ${user} | cut -d',' -f2`
+	  Account=`aws iam create-user --user-name ${new_user}`
+	  access_keys=`aws iam create-access-key --user-name ${new_user}`
+	  policy=`aws iam attach-user-policy --policy-arn ${policy_arn} --user-name ${new_user}`
+	  echo "New user added = ${new_user}. Access key for ${new_user} is ${access_keys}">>info.txt
+	  
+	  done
+	  
+	  
+	  
+# if ! grep "^${USER}:" /etc/passwd; then
+# Create the user account
+#fi

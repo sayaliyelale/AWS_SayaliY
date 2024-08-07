@@ -1,0 +1,5 @@
+Vinayak,arn:aws:iam::aws:policy/AmazonS3FullAccess
+Sayali,arn:aws:iam::aws:policy/AmazonEC2Access
+Kawaljeet,arn:aws:iam::aws:policy/AmazonRDSlAccess
+Ethans,arn:aws:iam::aws:policy/AmazonS3EC2ess
+Master,arn:aws:iam::aws:policy/AdministratorAccess

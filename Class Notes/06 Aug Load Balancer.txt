@@ -1,0 +1,61 @@
+
+DNS ---- Domain name system
+
+www   .     facebook    .   com
+
+prefix/       domain         top level domain
+sub domain
+
+
+from were be bought domain name is called ---registar service (Route 53)
+---------------------------------Record Set---------------------------
+1.IPV4 A Record
+2.APV6 AAAA Record
+3.CName Record(Canonical)---- ( Name on name)
+--other record sets
+4.MX Record
+5.NAPTR
+6.NS
+7.SOA
+8.TXT
+9.CAA
+10.PTR
+
+
+when we are configure ip with name it is called ---record set 
+															   
+															   
+when you put name behind name ex www.fb.com -----> example.com ----(Cname Record Canonical)	
+
+
+AWS has 4 load balancer
+
+1.Application LB     -- Web application traffic
+2.Network LB         -- process to process traffic  (Faster) (ultra low latency)
+3.Classic LB
+4.Gateway G/w LB														   
+---------------------------------------------------------------------------------------------
+                   Target Groups
+ 
+               -  Server one ( we can put more than one server in target group)
+              -
+Laod Balancer --  Server two
+             -
+			  -   Server Three
+			 
+==============================================================================================
+
+Scaling Category
+
+1.AutoScaling		
+
+2.Manual Scaling
+
+3.Automatic Scaling
+   --Scheduled Actions
+   --Dyanmic Policies
+      Step Scaling Policy
+      Simple Scaling Policy
+      Target Scaling Policy
+   --Predictive Policies
+			  
