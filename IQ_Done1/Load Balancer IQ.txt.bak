@@ -1,0 +1,142 @@
+What is Elastic Load Balancer (ELB)?
+
+What are the key features provided by Elastic Load Balancer (ELB)?
+
+How AWS Elastic Load Balancing Works?
+
+What are the types of load balancers?
+
+What is the difference between auto-scaling and ELB?
+
+What are Load balancing web sockets?
+
+How can we assign a static IP address to a ELB?
+
+Difference between Ingress and Load Balancer?
+
+List the types of techniques that are used by load balancers?
+
+What is Distributed concurrency system?
+
+What do you mean by a target group in AWS Load Balancing?
+
+What is the difference between cluster and load balancing?
+
+What is a database cluster?
+
+Explain NLB in AWS?
+
+What is VPC load balancer?
+
+What is Elastic Load Balancer (ELB)?
+Elastic Load Balancing (ELB) is a load-balancing service for Amazon Web Services (AWS) deployments. ELB automatically distributes incoming application traffic and scales resources to meet traffic demand.It also helps an IT team adjust capacity according to incoming application and network traffic. Load balancing divides the amount of work that a computer has to do among multiple computers so that users, in general, get served faster. ELB offers enhanced features including:
+--Detection of unhealthy Elastic Compute Cloud (EC2) instances.
+--Spreading instances across healthy channels only.
+--Flexible cipher support.
+--Centralized management of Secure Sockets Layer (SSL) certificates.
+--Optional public key authentication.
+--Support for both IPv4 and IPv6.
+
+
+What are the key features provided by Elastic Load Balancer (ELB)?
+--High availability
+The most well-known service that relies on ELB is Amazon's EC2, as ELB performs a health check to ensure an instance is still running before sending traffic to it. When an instance fails or is unhealthy, ELB routes traffic to the remaining healthy EC2 instances. If all EC2 instances in a particular availability zone are unhealthy, ELB can route traffic to other availability zones until the original instances restore to a healthy state.
+--Automatic scaling
+A developer can use AWS' Auto Scaling feature to guarantee he or she has enough EC2 instances running behind an ELB. The developer sets Auto Scaling conditions, and when a condition is met, a new EC2 instance can spin up to meet the desired minimum. A developer can also set a condition to spin up new EC2 instances to reduce latency.
+--Security
+ELB supports applications within an Amazon Virtual Private Cloud for stronger network security. An IT team can specify whether it wants an internet-facing or internal load balancer. The latter option enables a developer to route traffic through an ELB using private IP addresses. A developer could also route traffic between different tiers of an application by using multiple internet-facing and internal load balancers; this approach allows an IT team to use a security group along with private IP addresses while exposing only the web-facing tier and its public IP addresses.
+
+How AWS Elastic Load Balancing Works?
+A load balancer accepts incoming traffic from clients and routes requests to its registered targets (such as EC2 instances) in one or more Availability Zones. The load balancer also monitors the health of its registered targets and ensures that it routes traffic only to healthy targets. When the load balancer detects an unhealthy target, it stops routing traffic to that target. It then resumes routing traffic to that target when it detects that the target is healthy again.
+A listener is a process that checks for connection requests. It is configured with a protocol and port number for connections from clients to the load balancer. Likewise, it is configured with a protocol and port number for connections from the load balancer to the targets.
+
+What are the types of load balancers?
+Elastic Load Balancing supports the following types of load balancers:
+Application Load Balancers - It allows a developer to configure and route incoming end-user traffic to applications based in the Amazon Web Services (AWS) public cloud.It pushes traffic across multiple targets in multiple AWS Availability Zones.
+Network Load Balancers - The Network Load Balancing feature distributes traffic across several servers by using the TCP/IP networking protocol.It works by combining two or more computers that are running applications into a single virtual cluster, NLB provides reliability and performance for web servers and other mission-critical servers. (when server talking with server)
+Gateway Load Balancers - GLB enable you to deploy, scale, and manage virtual appliances, such as firewalls, intrusion detection and prevention systems, and deep packet inspection systems. A Gateway Load Balancer operates at the third layer of the Open Systems Interconnection (OSI) model, the network layer.
+Classic Load Balancers - It provides basic load balancing across multiple Amazon EC2 instances and operates at both the request level and connection level. Classic Load Balancer is intended for applications that are built within the EC2-Classic network.
+
+What is the difference between auto-scaling and ELB?
+Load balancing evenly distributes load to application instances in all availability zones in a region while auto scaling makes sure instances scale up or down depending on the load.
+Auto scaling is a cloud computing technique for dynamically allocating computational resources. Depending on the load to a server farm or pool, the number of servers that are active will typically vary automatically as user needs fluctuate.
+Auto scaling and load balancing are related because an application typically scales based on load balancing serving capacity. In other words, the serving capacity of the load balancer is one of several metrics that shapes the auto scaling policy.
+
+
+What are Load balancing web sockets?
+A connection can be opened through a load balancer, but once the connection is opened, it stays with the same server until it's closed or interrupted. This in turn means that the interaction is stateful; that you will end up storing at least some data in memory on the WebSocket server for each open client connection.
+
+Load balancing web sockets
+
+
+How can we assign a static IP address to a ELB?
+The network interface IP address and Windows adapter IP addresses must match for a successful network connection.
+Open the Amazon Elastic Compute Cloud (Amazon EC2) console.
+Choose the Region where you want to create your Network Load Balancer.
+Allocate Elastic IP addresses for your Network Load Balancer.
+Note: Be sure to create the same number of Elastic IP addresses as the number of subnets that you select in each Availability Zone. For more information, see Elastic IP address limit.
+Under Load Balancing, choose Load Balancers.
+Choose Create Load Balancer.
+For Network Load Balancer, choose Create.
+Select the VPC where you plan to provision the Network Load Balancer.
+Select the check box for the desired Availability Zone. Then, select the subnet in that Availability Zone.
+By default, the Network Load Balancer assigns a public IP address. If you want to use an Elastic IP address:For IPv4 address, choose Choose an Elastic IP.
+Select one of the Elastic IP addresses available in the specified Region. This IP address will be assigned to the Network Load Balancer's interfaces.
+(Optional) If you have multiple Availability Zones, repeat steps 8-9 for each zone.
+Complete the remaining steps for creating a Network Load Balancer.
+
+What is subnet ?
+A subnet in Amazon Web Services (AWS) is a range of IP addresses within a Virtual Private Cloud (VPC). Subnets can be used to group resources, such as Amazon EC2 instances, and can be public or private:
+Public subnets
+Contain resources that are accessible to the public, such as a company page
+Private subnets
+Contain resources that can only be accessed through a private network, such as databases with customer data
+
+Difference between Ingress and Load Balancer?
+LoadBalancer just points to external load balancers which do not reside in your cluster. If your pods are externally routable, these load balancers can work with them.
+The role of load balancer is to forward traffic to a host.
+Ingress is used to map incoming traffic from the internet to the services running in the cluster.
+Ingress on the other hand you can define a set of rules that your controller actively listens to. A load balancer service is something that could listen to these ingress rules.
+
+
+
+List the types of techniques that are used by load balancers?
+Round Robin.
+Weighted Round Robin.
+Least Connection.
+Weighted Least Connection.
+Resource Based (Adaptive)
+Resource Based (SDN Adaptive)
+Fixed Weighting.
+Weighted Response Time.
+
+What is Distributed concurrency system?
+Distributed concurrency control provides concepts and technologies to synchronize distributed transactions in a way that their interleaved execution does not violate the ACID properties. Distributed transactions are executed in a distributed database environment, where a set of connected data servers host related data.
+
+What do you mean by a target group in AWS Load Balancing?
+A target group tells a load balancer where to direct traffic to : EC2 instances, fixed IP addresses; or AWS Lambda functions, amongst others.
+When creating a load balancer, you create one or more listeners and configure listener rules to direct the traffic to one target group.
+
+
+What is the difference between cluster and load balancing?
+Clustering is a method of turning multiple computer servers into a cluster, which is a group of servers that acts like a single system.
+You can have an active-active cluster, but it will require multiple instances of SQL Server running on each node.
+Load Balancing is about the distribution of workloads across multiple computing resources, such as computers, server clusters, network links, etc.
+Load balancing (at least from SQL Server point of view) does not exists (at least in the same sense of web server load balancing).
+
+
+
+What is a database cluster?
+A database cluster is a collection of databases that is managed by a single instance of a running database server. After initialization, a database cluster will contain a database named postgres, which is meant as a default database for use by utilities, users and third party applications.
+Database Clustering is the process of combining more than one servers or instances connecting a single database. Sometimes one server may not be adequate to manage the amount of data or the number of requests, that is when a Data Cluster is needed.
+
+database cluster
+
+
+Explain NLB in AWS?
+AWS Network Load Balancer (NLB) is an Amazon Web Services (AWS) tool that distributes end user traffic across multiple cloud resources to ensure low latency and high throughput for applications.When a target becomes slow or unavailable, the Network Load Balancer routes traffic to another target.
+A load balancer accepts incoming traffic from clients and routes requests to its registered targets (such as EC2 instances) in one or more Availability Zones. The load balancer also monitors the health of its registered targets and ensures that it routes traffic only to healthy targets.
+
+
+What is VPC load balancer?
+When you provision an Elastic Load Balancer for your VPC, you can assign security groups to it. You can place ELBs into VPC subnets, and you can also use subnet ACLs (Access Control Lists). The EC2 instances that you register with the Elastic Load Balancer do not need to have public IP addresses
