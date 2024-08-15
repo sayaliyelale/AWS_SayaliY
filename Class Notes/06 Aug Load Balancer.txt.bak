@@ -10,15 +10,24 @@ sub domain
 from were be bought domain name is called ---registar service (Route 53)
 ---------------------------------Record Set---------------------------
 1.IPV4 A Record
+
 2.APV6 AAAA Record
+
 3.CName Record(Canonical)---- ( Name on name)
 --other record sets
+
 4.MX Record -A mail exchange (MX) record in the Domain Name System (DNS) directs email messages to a mail server on behalf of a domain name. MX records are important for: Differentiating web and email servers, Creating redundancy, Load balancing email traffic, and Troubleshooting mail delivery problems
+
 5.NAPTR (A Naming Authority Pointer (NAPTR) record is a type of resource record in the Domain Name System (DNS) that maps the internet telephony address space to the internet address space. NAPTR records are often used in internet telephony applications, such as mapping servers and user addresses in the Session Initiation Protocol (SIP). They can also be used to map E.164 numbers, which are telephone numbers, to URIs (Uniform Resource Identifiers) or IP addresses. This allows users to reach devices like fax machines and VoIP phones on the internet using telephone numbers. 
+
 6.NS (An NS record, or nameserver record, is a DNS record that contains the name of the authoritative name server for a domain or DNS zone. NS records are essential for people to use DNS names to reach services, and without them, DNS queries are not possible)
+
 7.SOA (A DNS (domain name system) start of authority (SOA) record is a record that contains administrative information about a zone or domain. It's required for all DNS zones to comply with IETF standards)
+
 8.TXT (A TXT record, or text record, is a type of Domain Name System (DNS) record that stores text-based information about a domain. TXT records can contain both human-readable and machine-readable data. They can be used for a variety of purposes, including: Domain ownership verification, Email spam prevention, Framework policies, General information, and Points of contact for the domain)
+
 9.CAA (A Certification Authority Authorization (CAA) record is a type of Domain Name Server (DNS) record that allows domain owners to specify which certificate authorities (CAs) are allowed to issue SSL certificates for their domain. Before issuing a certificate, the CA checks the CAA records and blocks the request if the CA is not listed. If there is no CAA record, any CA can issue a certificate for the domain)
+
 10.PTR (A DNS pointer record (PTR) is a record in the Domain Name System (DNS) that maps an IP address to a domain name. PTR records are also known as reverse DNS records and are the opposite of A records, which map domain names to IP addresses)
 
 

@@ -56,11 +56,11 @@ Laod Balancer --  Server two
 
 Scaling Category
 
-1.AutoScaling		
+AutoScaling	have two categories	
 
-2.Manual Scaling
+Manual Scaling
 
-3.Automatic Scaling
+Automatic Scaling
    --Scheduled Actions
    --Dyanmic Policies
       Step Scaling Policy
