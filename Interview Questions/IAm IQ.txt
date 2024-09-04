@@ -1,0 +1,170 @@
+-------Basic------------
+
+Can you briefly describe what AWS IAM does and how you’ve used it?
+What are the core elements of an AWS IAM policy statement and what is each element’s purpose?
+What identities can you specify in the Principal element?
+What happens if you have one IAM statement that allows a principal to perform an operation on a resource and another statement that denies that same operation on the same resource?
+What are the basic differences between IAM roles and users? When should you use each?
+
+--------Intermediate-----------------------------
+
+What are the different types of AWS IAM policies? Which are most important and why?
+When an IAM principal makes an AWS API request, how does IAM evaluate policies in order to decide whether or not to allow access?
+How do you connect or associate people’s identities in a corporate directory such as Active Directory to IAM roles?
+
+--------------Advanced-----------------
+
+What are IAM policy conditions and when are some good times to use them?
+How do you implement least privilege with AWS IAM? What’s the hardest part of doing that?
+What are some ways to scale permissions management across the Engineering organization?
+
+==============================================================================================
+
+Basic Questions
+Q1. Can you briefly describe what AWS IAM does and how you’ve used it?
+
+At its core, IAM controls whether a principal may act on a resource.
+
+The Identity and Access Management system serves two purposes in AWS:
+
+First, IAM models identities that can authenticate and use the AWS cloud.
+
+Second, IAM enables you to write policies that authorize identities to access AWS services and resources in the AWS cloud
+
+Most people’s first usage entails one of:
+
+giving people access to provision low-level infrastructure such as networks and/or develop applications in AWS
+explore AWS services for use in an application
+develop an application that uses AWS services, particularly datastores such as S3, DynamoDB, and RDS
+deploy an application to AWS and configure its infrastructure using automation
+
+
+Q2. What are the core elements of an AWS IAM policy statement and what is each element’s purpose?
+Principal: Identifies the principals that the statement applies to, most importantly and commonly an AWS IAM principal.
+
+Effect: whether to Allow or Deny access if the statement applies; Deny always wins when multiple statements apply.
+
+Action: one or more AWS API actions the statement will Allow or Deny the Principal to invoke as a string or list of strings. Supports wildcards, ? and *.
+
+Resource: one or more AWS resources the statement applies to, specified as ARNs. Supports wildcards, ? and *.
+
+Q3. What identities can you specify in the Principal element?
+
+The most important kind of identities are AWS IAM identities from within your AWS accounts: IAM roles & roles.  You can also specify an entire AWS account, role sessions, and federated users.
+
+The second most important kind of principal is an AWS service such as ec2, cloudtrail, or dynamodb.
+
+Q4. What happens if you have one IAM statement that allows a principal to perform an operation on a resource and another statement that denies that same operation on the same resource?
+
+The Deny effect always wins when multiple statements apply.
+
+Q5. What are the basic differences between IAM roles and users?  When should you use each?
+
+The biggest difference between IAM roles and users is how they authenticate.  You authenticate as an IAM user principal using a password or API Access Key credential.  But safely handling credentials is difficult so you should avoid that wherever possible.
+
+AWS provides IAM role principals and you cannot authenticate as a role directly.  Instead people and applications assume that Role via another trusted identity such as an SSO/Identity Provider or an AWS compute service like ec2. 
+When you assume the role, you get short term credentials in the assume role response or from the compute service’s instance metadata endpoint.
+
+You should prefer using IAM roles so that you’re always using short term credentials.  Using short term credentials minimizes risk of abuse if those credentials are leaked or stolen.
+
+Intermediate Questions
+Q6. What are the different types of AWS IAM policies?  Which are most important and why?
+
+There are 5 types of AWS IAM policies:
+
+Service Control
+Identity
+Permission Boundary
+Session
+Resource
+The three most important policy types are:
+
+Service Control: A policy attached to an AWS account or organizational unit that establishes guardrails for what services and operations can be used within an account. 
+A service control policy can only deny or limit allowed access; it cannot allow a principal to perform an operation on its own.
+
+Identity: A policy attached to an IAM principal used by people and applications that allows, or sometimes denies, them to use AWS services and resources. The most common policy.
+
+Resource: A policy attached to a data resource that allows or denies access to a specific data resource such as an S3 bucket. Often used to enable cross-account access to a data resource.
+
+ 
+
+Q7. When an IAM principal makes an AWS API request, how does IAM evaluate policies in order to decide whether or not to allow access? For example, when an application running as a lambda function executes a request to get an object from S3, what IAM policies are evaluated?
+
+This flowchart shows how AWS evaluates IAM policies:
+
+IAM policy evaluation Flowchart
+
+AWS Security Policy Evaluation Logic (Effective IAM for AWS – Figure 3.1)
+
+When a service receives the request, IAM (roughly):
+
+Authenticates the request came from the principal and is signed by a valid credential
+Checks Service Control Policies to see if the operation is denied or not-allowed; if not-allowed, evaluation stops and a deny is returned otherwise it proceeds to resource policies
+If the service supports resource policies and the resource has a resource policy attached, then the service evaluates the policy.
+If access is denied, evaluation stops and a deny is returned.
+If access is explicitly allowed, then evaluation stops and the action proceeds.
+If no statements in the resource policy apply to the principal, then policy evaluation proceeds to the Permission Boundary policy, if attached, or the Identity policies
+If a Permission Boundary is attached to the principal, that policy is evaluated and:
+If access is denied or not-allowed, evaluation stops and a deny is returned
+If access is not-denied, evaluation proceeds to Session policy, if attached, or the Identity policies
+If a Session Policy is attached (to the role), the policy is evaluated and:
+If access is denied, evaluation stops and a deny is returned
+If access is explicitly allowed, then evaluation stops and the action proceeds.
+Finally, IAM evaluates the Identity policies attached to the principal.
+If access is denied, evaluation stops and a deny is returned.
+If access is explicitly allowed, then evaluation stops and the action proceeds
+If no statements apply, then evaluation stops and an (implicit) deny is returned
+
+Q8. How do you connect or associate people’s identities in a corporate directory such as Active Directory to IAM roles?
+
+Federate corporate identities to AWS IAM with an Identity Provider.  You can either manage your own AWS Identity Provider and Roles or you can connect the corporate directory to AWS SSO and provision permission sets which manage IAM roles from there.
+
+See Effective IAM for AWS, Create IAM principals and provision access, for how to federate AWS identity for human users.
+
+Advanced Questions
+Q9. What are IAM policy conditions and when are some good times to use them?
+IAM policy conditions are elements that allow policy authors to focus the conditions upon when the statement applies to data provided in the request context.
+
+Some good times to use policy conditions are to require that:
+
+the principal was authenticated in a certain way, i.e. with Multi-Factor Authentication or between certain times
+the principal belongs to a certain AWS organization or OU, or matches a certain naming convention using wildcards
+the target resource belongs to a certain AWS organization or OU
+You can use policy conditions to simplify AWS IAM with infrastructure code libraries. Those libraries can offer a simple interface to IAM features that implement advanced techniques such as data perimeters.
+
+See Effective IAM for AWS’ Simplify AWS IAM chapter for more on the policy conditions you can use to focus your IAM efforts.
+
+Q10. How do you implement least privilege with AWS IAM?  What’s the hardest part of doing that?
+
+Organizations implement least privilege by provisioning IAM policies that only allow the access that person or application needs to perform its business function.  
+Conversely, data and other resources should only be accessible by principals who have a need to use the resource, and only for the specific operations that support their job function.
+
+For example, an application that needs to read data from a single S3 bucket supporting the application, should not:
+
+be able to read data from other S3 buckets
+write or delete in that, or any other buckets
+Nelson's Gulf of Execution and Evaluation applied to AWS IAM
+The Gulfs of Execution and Evaluation for AWS Security (Effective IAM for AWS – Figure 3.3)
+
+The hardest part of implementing least privilege is often understanding what policies currently do, 
+so that you can close off unintended access to critical data sources. Because provisioning least privilege access at scale is tedious and error prone, there are many principals with excess permissions that allow access to data resources and APIs the principals do not actually need.
+
+The key to understand is that IAM is very flexible and powerful, but this makes it difficult to use.  Even experts find it difficult to understand the state of the system’s policies and converge them to what they intend.
+
+So engineers must solve a few big problems to scale IAM:
+
+simplify IAM so engineers can provision least privilege policies easily; e.g. k9 Infrastructure Code libraries
+simplify IAM so engineers can understand what the effective access of all the policies in the account allow
+train engineers how to use the simplified provisioning and access review tools
+integrate IAM security into regular engineering and operations processes: design, development, code review, and regular operations reviews
+See Effective IAM for AWS’ Why is AWS IAM so hard to use? chapter for more on IAM’s usability challenges.
+
+You can test who has access to a resource using the IAM policy simulator.  For example you can test an S3 bucket policy to verify who has access to the bucket, and whether encryption is required.
+
+Q11. What are some ways to scale permissions management across the Engineering organization?
+
+k9 Security recommends scaling permissions management by scaling your app & cloud engineers’:
+
+ability with simple infrastructure code libraries that configure policies correctly and access reports that are easy to understand so that every app and cloud engineer can understand who has access to AWS APIs and data, and can use that within their normal delivery process to make good access control decisions.
+motivation with a culture that incorporates security into ‘regular’ product development and operations review processes (i.e. security is not special or different from reliability, performance, and usability), removes disincentives towards from being secure, and provides support from a broad base of contributors in a cloud security ‘guild’
+See 
